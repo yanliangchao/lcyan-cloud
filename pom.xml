@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.lcyan</groupId>
+	<artifactId>lcyan-cloud</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>lcyan-cloud</name>
+	<description>lcyan-cloud</description>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.3.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<modules>
+		<module>lcyan-common</module>
+		<module>lcyan-api</module>
+		<module>lcyan-service</module>
+		<module>lcyan-gateway</module>
+	</modules>
+	<properties>
+		<!-- 版本号 -->
+		<revision>${project.version}</revision>
+		<!-- 编译 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<!-- spring boot、spring cloud -->
+		<spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+		<spring-cloud.version>Hoxton.SR7</spring-cloud.version>
+		<security.auth.version>2.3.5.RELEASE</security.auth.version>
+		<swagger.version>2.9.2</swagger.version>
+		<alibaba.version>2.2.0.RELEASE</alibaba.version>
+	</properties>
+
+	<dependencies>
+		<!-- 
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency> 
+		-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- 整合spring-cloud-alibaba -->
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>${alibaba.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- swagger -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${swagger.version}</version>
+			</dependency>
+			
+			<!-- lcyan-auth-common -->
+			<dependency>
+                <groupId>com.lcyan</groupId>
+                <artifactId>lcyan-auth-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            
+            <!-- lcyan-basic-common -->
+			<dependency>
+                <groupId>com.lcyan</groupId>
+                <artifactId>lcyan-basic-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            
+            <!-- lcyan-feign-common -->
+			<dependency>
+                <groupId>com.lcyan</groupId>
+                <artifactId>lcyan-feign-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            
+            <!-- lcyan-log-common -->
+			<dependency>
+                <groupId>com.lcyan</groupId>
+                <artifactId>lcyan-log-common</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            
+            <!-- lcyan-auth-api -->
+			<dependency>
+                <groupId>com.lcyan</groupId>
+                <artifactId>lcyan-auth-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>
