@@ -13,6 +13,7 @@
 	<description>lcyan-service</description>
 	<modules>
 		<module>lcyan-auth-service</module>
+		<module>lcyan-user-service</module>
 	</modules>
 	<dependencies>
 		<dependency>

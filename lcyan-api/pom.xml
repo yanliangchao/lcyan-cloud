@@ -20,4 +20,8 @@
 		</dependency>
 	</dependencies>
   
+	<modules>
+		<module>lcyan-user-api</module>
+		<module>lcyan-auth-api</module>
+	</modules>
 </project>

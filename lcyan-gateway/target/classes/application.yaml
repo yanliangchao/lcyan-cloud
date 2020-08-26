@@ -1,0 +1,15 @@
+server: 
+  port: 8000
+spring: 
+  application: 
+    name: lcyan-gateway
+  cloud: 
+    nacos: 
+      discovery: 
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery: 
+        locator: 
+          enabled: true
+      loadbalancer:
+        use404: true

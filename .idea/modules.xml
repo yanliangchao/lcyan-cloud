@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/lcyan-api/lcyan-api.iml" filepath="$PROJECT_DIR$/lcyan-api/lcyan-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-api/lcyan-auth-api/lcyan-auth-api.iml" filepath="$PROJECT_DIR$/lcyan-api/lcyan-auth-api/lcyan-auth-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-common/lcyan-auth-common/lcyan-auth-common.iml" filepath="$PROJECT_DIR$/lcyan-common/lcyan-auth-common/lcyan-auth-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-service/lcyan-auth-service/lcyan-auth-service.iml" filepath="$PROJECT_DIR$/lcyan-service/lcyan-auth-service/lcyan-auth-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-common/lcyan-basic-common/lcyan-basic-common.iml" filepath="$PROJECT_DIR$/lcyan-common/lcyan-basic-common/lcyan-basic-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-cloud.iml" filepath="$PROJECT_DIR$/lcyan-cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-common/lcyan-common.iml" filepath="$PROJECT_DIR$/lcyan-common/lcyan-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-common/lcyan-feign-common/lcyan-feign-common.iml" filepath="$PROJECT_DIR$/lcyan-common/lcyan-feign-common/lcyan-feign-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-gateway/lcyan-gateway.iml" filepath="$PROJECT_DIR$/lcyan-gateway/lcyan-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-common/lcyan-log-common/lcyan-log-common.iml" filepath="$PROJECT_DIR$/lcyan-common/lcyan-log-common/lcyan-log-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-service/lcyan-service.iml" filepath="$PROJECT_DIR$/lcyan-service/lcyan-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-api/lcyan-user-api/lcyan-user-api.iml" filepath="$PROJECT_DIR$/lcyan-api/lcyan-user-api/lcyan-user-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lcyan-service/lcyan-user-service/lcyan-user-service.iml" filepath="$PROJECT_DIR$/lcyan-service/lcyan-user-service/lcyan-user-service.iml" />
+    </modules>
+  </component>
+</project>

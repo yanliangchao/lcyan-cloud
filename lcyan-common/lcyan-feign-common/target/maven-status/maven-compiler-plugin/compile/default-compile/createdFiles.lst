@@ -1,0 +1,4 @@
+com\lcyan\common\feign\interceptor\LogInterceptor.class
+com\lcyan\common\feign\config\RestTemplateConfig.class
+com\lcyan\common\feign\config\CustomFeignConfig.class
+com\lcyan\common\feign\config\FeignOkHttpConfig.class

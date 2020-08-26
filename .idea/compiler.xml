@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="lcyan-user-service" />
+        <module name="lcyan-auth-common" />
+        <module name="lcyan-log-common" />
+        <module name="lcyan-auth-service" />
+        <module name="lcyan-user-api" />
+        <module name="lcyan-feign-common" />
+        <module name="lcyan-basic-common" />
+        <module name="lcyan-gateway" />
+        <module name="lcyan-auth-api" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lcyan-api" target="1.8" />
+      <module name="lcyan-auth-api" target="1.8" />
+      <module name="lcyan-auth-common" target="1.8" />
+      <module name="lcyan-auth-service" target="1.8" />
+      <module name="lcyan-basic-common" target="1.8" />
+      <module name="lcyan-cloud" target="1.8" />
+      <module name="lcyan-common" target="1.8" />
+      <module name="lcyan-feign-common" target="1.8" />
+      <module name="lcyan-gateway" target="1.8" />
+      <module name="lcyan-log-common" target="1.8" />
+      <module name="lcyan-service" target="1.8" />
+      <module name="lcyan-user-api" target="1.8" />
+      <module name="lcyan-user-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="lcyan-auth-api" options="-parameters" />
+      <module name="lcyan-auth-common" options="-parameters" />
+      <module name="lcyan-auth-service" options="-parameters" />
+      <module name="lcyan-basic-common" options="-parameters" />
+      <module name="lcyan-feign-common" options="-parameters" />
+      <module name="lcyan-gateway" options="-parameters" />
+      <module name="lcyan-log-common" options="-parameters" />
+      <module name="lcyan-user-api" options="-parameters" />
+      <module name="lcyan-user-service" options="-parameters" />
+    </option>
+  </component>
+</project>

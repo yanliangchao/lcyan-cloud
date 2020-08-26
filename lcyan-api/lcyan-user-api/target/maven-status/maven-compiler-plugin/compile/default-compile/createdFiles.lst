@@ -1,0 +1,16 @@
+com\lcyan\user\api\model\QUserRole.class
+com\lcyan\user\api\model\RoleMenu$Id.class
+com\lcyan\user\api\model\RoleMenu.class
+com\lcyan\user\api\model\QRole.class
+com\lcyan\user\api\model\User.class
+com\lcyan\user\api\model\QRoleMenu.class
+com\lcyan\user\api\dto\UserDto.class
+com\lcyan\user\api\model\Menu.class
+com\lcyan\user\api\model\UserRole$Id.class
+com\lcyan\user\api\dto\MenuDto.class
+com\lcyan\user\api\model\Role.class
+com\lcyan\user\api\controller\UserController.class
+com\lcyan\user\api\model\QMenu.class
+com\lcyan\user\api\model\QUser.class
+com\lcyan\user\api\dto\UserInfoDto.class
+com\lcyan\user\api\model\UserRole.class

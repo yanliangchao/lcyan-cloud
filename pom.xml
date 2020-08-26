@@ -36,15 +36,12 @@
 		<security.auth.version>2.3.5.RELEASE</security.auth.version>
 		<swagger.version>2.9.2</swagger.version>
 		<alibaba.version>2.2.0.RELEASE</alibaba.version>
+		<apt-maven.version>1.1.3</apt-maven.version>
 	</properties>
 
 	<dependencies>
-		<!-- 
-		<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-		</dependency> 
-		-->
+		<!-- <dependency> <groupId>com.alibaba.cloud</groupId> <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId> 
+			</dependency> -->
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
@@ -53,6 +50,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+		<!-- QueryDsl -->
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-apt</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -96,41 +104,73 @@
 				<artifactId>springfox-swagger-ui</artifactId>
 				<version>${swagger.version}</version>
 			</dependency>
-			
+
 			<!-- lcyan-auth-common -->
 			<dependency>
-                <groupId>com.lcyan</groupId>
-                <artifactId>lcyan-auth-common</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            
-            <!-- lcyan-basic-common -->
+				<groupId>com.lcyan</groupId>
+				<artifactId>lcyan-auth-common</artifactId>
+				<version>${revision}</version>
+			</dependency>
+
+			<!-- lcyan-basic-common -->
 			<dependency>
-                <groupId>com.lcyan</groupId>
-                <artifactId>lcyan-basic-common</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            
-            <!-- lcyan-feign-common -->
+				<groupId>com.lcyan</groupId>
+				<artifactId>lcyan-basic-common</artifactId>
+				<version>${revision}</version>
+			</dependency>
+
+			<!-- lcyan-feign-common -->
 			<dependency>
-                <groupId>com.lcyan</groupId>
-                <artifactId>lcyan-feign-common</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            
-            <!-- lcyan-log-common -->
+				<groupId>com.lcyan</groupId>
+				<artifactId>lcyan-feign-common</artifactId>
+				<version>${revision}</version>
+			</dependency>
+
+			<!-- lcyan-log-common -->
 			<dependency>
-                <groupId>com.lcyan</groupId>
-                <artifactId>lcyan-log-common</artifactId>
-                <version>${revision}</version>
-            </dependency>
-            
-            <!-- lcyan-auth-api -->
+				<groupId>com.lcyan</groupId>
+				<artifactId>lcyan-log-common</artifactId>
+				<version>${revision}</version>
+			</dependency>
+
+			<!-- lcyan-auth-api -->
 			<dependency>
-                <groupId>com.lcyan</groupId>
-                <artifactId>lcyan-auth-api</artifactId>
-                <version>${revision}</version>
-            </dependency>
+				<groupId>com.lcyan</groupId>
+				<artifactId>lcyan-auth-api</artifactId>
+				<version>${revision}</version>
+			</dependency>
+
+			<!-- lcyan-user-api -->
+			<dependency>
+				<groupId>com.lcyan</groupId>
+				<artifactId>lcyan-user-api</artifactId>
+				<version>${revision}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<build>
+		<pluginManagement>
+			<plugins>
+				<!-- QueryDsl代码生成插件 -->
+				<plugin>
+					<groupId>com.mysema.maven</groupId>
+					<artifactId>apt-maven-plugin</artifactId>
+					<version>${apt-maven.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>process</goal>
+							</goals>
+							<configuration>
+								<!-- 查询对象的生成路径 -->
+								<outputDirectory>target/generated-sources/java</outputDirectory>
+								<!-- 生成查询对象的处理器， 使用JPA-->
+								<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+    </build>
 </project>

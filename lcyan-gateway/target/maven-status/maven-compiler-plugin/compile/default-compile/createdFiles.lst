@@ -1,0 +1,4 @@
+com\lcyan\gateway\GatewayApplication.class
+com\lcyan\gateway\config\GatewayConfig.class
+com\lcyan\gateway\controller\SwaggerResourceController.class
+com\lcyan\gateway\component\MySwaggerResourceProvider.class

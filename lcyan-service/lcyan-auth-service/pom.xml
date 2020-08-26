@@ -14,5 +14,19 @@
   		<groupId>com.lcyan</groupId>
   		<artifactId>lcyan-auth-api</artifactId>
   	</dependency>
+  	<dependency>
+  		<groupId>com.lcyan</groupId>
+  		<artifactId>lcyan-auth-common</artifactId>
+  	</dependency>
   </dependencies>
+
+    <build>
+        <plugins>
+            <!-- QueryDsl代码生成插件 -->
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

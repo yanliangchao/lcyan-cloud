@@ -1,8 +1,12 @@
 server: 
   port: 8010
-spring: 
+spring:
+  profiles:
+    active: '@spring.profiles.active@'
+  main:
+    allow-bean-definition-overriding: true
   application: 
-    name: lcyan-auth
+    name: '@project.artifactId@'
   cloud: 
     nacos: 
       discovery: 

@@ -8,5 +8,14 @@
   <artifactId>lcyan-auth-api</artifactId>
   <name>lcyan-auth-api</name>
   <description>lcyan-auth-api</description>
-  
+
+  <build>
+    <plugins>
+      <!-- QueryDsl代码生成插件 -->
+      <plugin>
+        <groupId>com.mysema.maven</groupId>
+        <artifactId>apt-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
 </project>

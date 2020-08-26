@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.lcyan</groupId>
+    <artifactId>lcyan-api</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>lcyan-user-api</artifactId>
+  <name>lcyan-user-api</name>
+  <description>lcyan-user-api</description>
+
+  <build>
+    <plugins>
+      <!-- QueryDsl代码生成插件 -->
+      <plugin>
+        <groupId>com.mysema.maven</groupId>
+        <artifactId>apt-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>
