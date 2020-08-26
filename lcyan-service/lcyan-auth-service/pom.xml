@@ -18,6 +18,7 @@
   		<groupId>com.lcyan</groupId>
   		<artifactId>lcyan-auth-common</artifactId>
   	</dependency>
+
   </dependencies>
 
     <build>
