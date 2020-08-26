@@ -1,8 +1,0 @@
-com\lcyan\auth\config\CustomAuthorizationServerConfigurer.class
-com\lcyan\auth\config\SecurityConfig.class
-com\lcyan\auth\AuthApplication.class
-com\lcyan\auth\config\CustomAuthorizationServerConfigurer$1.class
-com\lcyan\auth\utils\CustomUserDetailsService.class
-com\lcyan\auth\utils\SecurityConfigProperties.class
-com\lcyan\auth\config\WebMvcConfig.class
-com\lcyan\auth\controller\AuthControllerImpl.class
