@@ -7,4 +7,9 @@
 *.iml
 out
 gen
-*/target/
+target
+/logs/
+.classpath
+.settings/
+.class
+generated-sources
