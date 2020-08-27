@@ -1,6 +1,7 @@
 package com.lcyan.auth.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +12,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
-import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -51,7 +54,7 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
         resources.resourceId(RESOURCE_ID).stateless(false);
         //设置token存储
-        resources.tokenStore(tokenStore());
+        resources.tokenStore(tokenStore()).tokenServices(tokenService());
         resources.authenticationEntryPoint(authExceptionEntryPoint).accessDeniedHandler(accessDeniedHandler());
         
     }
@@ -59,11 +62,21 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
     /**
      * 设置token存储，这一点配置要与授权服务器相一致
      */
+    /*
     @Bean
     public RedisTokenStore tokenStore(){
         RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
         redisTokenStore.setPrefix("auth-token:");
         return redisTokenStore;
+    }*/
+    
+    /**
+     * jwt的token存储对象
+     */
+    
+    @Bean
+    public JwtTokenStore tokenStore(){
+        return new JwtTokenStore(jwtAccessTokenConverter());
     }
 
     @Override
@@ -75,13 +88,37 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
                 .authorizeRequests()
                 .antMatchers(filterIgnorePropertiesConfig.getUrls().toArray(ignores)).permitAll()
                 .anyRequest().authenticated()
+                //.and().oauth2ResourceServer(conf -> conf.jwt().jwtAuthenticationConverter(jwtAccessTokenConverter()))
                 .and()
                 .exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }
+    
+    
     
     @Bean
     @ConditionalOnMissingBean(AccessDeniedHandler.class)
     public AccessDeniedHandler accessDeniedHandler() {
         return new CustomAccessDeniedHandler(objectMapper);
+    }
+    
+    @Bean
+    public CustomTokenServices tokenService() {
+    	CustomTokenServices tokenServices = new CustomTokenServices();
+    	DefaultAccessTokenConverter accessTokenConverter = new DefaultAccessTokenConverter();
+    	tokenServices.setTokenStore(tokenStore());
+        tokenServices.setJwtAccessTokenConverter(jwtAccessTokenConverter());
+        tokenServices.setDefaultAccessTokenConverter(accessTokenConverter);
+        return tokenServices;
+    }
+    
+    @Value("${security.oauth2.resource.jwt.keyValue}")
+    private String publicKey;
+    
+    @Bean
+    protected JwtAccessTokenConverter jwtAccessTokenConverter() {
+      JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+//      converter.setSigningKey("my-sign-key"); //对称加密算法使用与授权服务器相同的signingKey
+      converter.setVerifierKey(publicKey);
+      return converter;
     }
 }
