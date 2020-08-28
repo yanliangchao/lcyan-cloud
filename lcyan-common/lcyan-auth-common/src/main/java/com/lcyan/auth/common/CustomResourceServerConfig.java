@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHandler;
 import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -62,22 +62,22 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
     /**
      * 设置token存储，这一点配置要与授权服务器相一致
      */
-    /*
+    
     @Bean
     public RedisTokenStore tokenStore(){
         RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
         redisTokenStore.setPrefix("auth-token:");
         return redisTokenStore;
-    }*/
+    }
     
     /**
      * jwt的token存储对象
      */
-    
+    /*
     @Bean
     public JwtTokenStore tokenStore(){
-        return new JwtTokenStore(jwtAccessTokenConverter());
-    }
+        return new JwtTokenStore(accessTokenConverter());
+    }*/
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -88,9 +88,8 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
                 .authorizeRequests()
                 .antMatchers(filterIgnorePropertiesConfig.getUrls().toArray(ignores)).permitAll()
                 .anyRequest().authenticated()
-                //.and().oauth2ResourceServer(conf -> conf.jwt().jwtAuthenticationConverter(jwtAccessTokenConverter()))
                 .and()
-                .exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler());
     }
     
     
@@ -106,7 +105,7 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
     	CustomTokenServices tokenServices = new CustomTokenServices();
     	DefaultAccessTokenConverter accessTokenConverter = new DefaultAccessTokenConverter();
     	tokenServices.setTokenStore(tokenStore());
-        tokenServices.setJwtAccessTokenConverter(jwtAccessTokenConverter());
+        tokenServices.setJwtAccessTokenConverter(accessTokenConverter());
         tokenServices.setDefaultAccessTokenConverter(accessTokenConverter);
         return tokenServices;
     }
@@ -115,10 +114,11 @@ public class CustomResourceServerConfig extends ResourceServerConfigurerAdapter 
     private String publicKey;
     
     @Bean
-    protected JwtAccessTokenConverter jwtAccessTokenConverter() {
+    protected JwtAccessTokenConverter accessTokenConverter() {
       JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
 //      converter.setSigningKey("my-sign-key"); //对称加密算法使用与授权服务器相同的signingKey
       converter.setVerifierKey(publicKey);
       return converter;
     }
+
 }

@@ -121,7 +121,8 @@ public class CustomAuthorizationServerConfigurer extends AuthorizationServerConf
         .tokenStore(tokenStore())
         .tokenServices(tokenService())
         // token增强
-        .tokenEnhancer(jwtTokenEnhancer())
+        //.tokenEnhancer(jwtTokenEnhancer())
+        .accessTokenConverter(jwtTokenEnhancer())
         // 异常转换
         .exceptionTranslator(webResponseExceptionTranslator());
         
