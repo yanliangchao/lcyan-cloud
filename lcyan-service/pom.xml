@@ -14,6 +14,7 @@
 	<modules>
 		<module>lcyan-auth-service</module>
 		<module>lcyan-user-service</module>
+		<module>lcyan-soo-service</module>
 	</modules>
 	<dependencies>
 		<dependency>

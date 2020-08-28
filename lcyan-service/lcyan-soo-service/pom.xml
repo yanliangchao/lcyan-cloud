@@ -4,25 +4,21 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.lcyan</groupId>
-		<artifactId>lcyan-cloud</artifactId>
+		<artifactId>lcyan-service</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>lcyan-api</artifactId>
-	<packaging>pom</packaging>
-	<name>lcyan-api</name>
-	<description>lcyan-api</description>
+	<artifactId>lcyan-soo-service</artifactId>
+	<name>lcyan-soo-service</name>
+	<description>lcyan-soo-service</description>
 	<dependencies>
-		
-		<!-- lcyan-basic-common -->
+		<dependency>
+			<groupId>io.minio</groupId>
+			<artifactId>minio</artifactId>
+			<version>7.1.0</version>
+		</dependency>
 		<dependency>
 			<groupId>com.lcyan</groupId>
-			<artifactId>lcyan-basic-common</artifactId>
+			<artifactId>lcyan-soo-api</artifactId>
 		</dependency>
 	</dependencies>
-  
-	<modules>
-		<module>lcyan-user-api</module>
-		<module>lcyan-auth-api</module>
-		<module>lcyan-soo-api</module>
-	</modules>
 </project>

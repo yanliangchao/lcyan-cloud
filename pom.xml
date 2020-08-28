@@ -146,6 +146,13 @@
 				<artifactId>lcyan-user-api</artifactId>
 				<version>${revision}</version>
 			</dependency>
+			
+			<!-- lcyan-soo-api -->
+			<dependency>
+				<groupId>com.lcyan</groupId>
+				<artifactId>lcyan-soo-api</artifactId>
+				<version>${revision}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
